@@ -38,12 +38,12 @@ class Contact extends Component {
                   onClick={this.onDeleteClick.bind(this, id, dispatch)}
                 />
               </h4>
-              {showContactInfo ? (
+              {showContactInfo && (
                 <ul className="list-group">
                   <li className="list-group-item">Email: {email}</li>
                   <li className="list-group-item">Phone: {phone}</li>
                 </ul>
-              ) : null}
+              )}
             </div>
           );
         }}

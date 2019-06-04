@@ -11,6 +11,50 @@ const reducer = (state, action) => {
           contact => contact.id !== action.payload
         )
       };
+    case "SORT_AZ":
+      return {
+        ...state,
+        contacts: state.contacts.sort(function(a, b) {
+          if (!action.payload) {
+            if (a.name < b.name) {
+              return -1;
+            }
+            if (a.name > b.name) {
+              return 1;
+            }
+            return 0;
+          } else {
+            if (a.id < b.id) {
+              return -1;
+            }
+            if (a.id > b.id) {
+              return 1;
+            }
+          }
+        })
+      };
+    case "SORT_ZA":
+      return {
+        ...state,
+        contacts: state.contacts.sort(function(a, b) {
+          if (!action.payload) {
+            if (a.name < b.name) {
+              return 1;
+            }
+            if (a.name > b.name) {
+              return -1;
+            }
+            return 0;
+          } else {
+            if (a.id < b.id) {
+              return -1;
+            }
+            if (a.id > b.id) {
+              return 1;
+            }
+          }
+        })
+      };
     default:
       return state;
   }
